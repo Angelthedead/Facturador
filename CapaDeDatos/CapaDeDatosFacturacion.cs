@@ -39,9 +39,9 @@ namespace CapaDeDatos
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ha ocurrido un error1: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un error al procesar el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -68,9 +68,9 @@ namespace CapaDeDatos
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ha ocurrido un error2: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un error al procesar la factura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -98,9 +98,9 @@ namespace CapaDeDatos
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ha ocurrido un error3: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un error al procesar el detalle de la factura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -123,9 +123,9 @@ namespace CapaDeDatos
                 }
                 return ultimoIdFactura;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ha ocurrido un error4: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un error al obtener la factura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return 0;
             }
