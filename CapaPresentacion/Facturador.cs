@@ -29,7 +29,7 @@ namespace CapaPresentacion
             CapaNegocio = new CapaDeNegocioFacturacion();
             EntidadFactura = new CapaDeEntidadesFactura();
             EntidadCliente = new CapaDeEntidadesCliente();
-            
+
         }
 
         private void Facturador_Load(object sender, EventArgs e)
@@ -90,7 +90,13 @@ namespace CapaPresentacion
                 EntidadCliente.Nombres = txtNombres.Text;
                 EntidadCliente.Apellidos = txtApellidos.Text;
                 EntidadCliente.Cedula = txtCedula.Text;
-                EntidadCliente.Telefono = (int)Convert.ToInt64(txtTelefono.Text);
+
+                if (!int.TryParse(txtTelefono.Text, out int telefono))
+                {
+                    MessageBox.Show("El teléfono ingresado no es válido. Debe ser un número entero.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                EntidadCliente.Telefono = telefono;
                 EntidadCliente.Correo = txtCorreo.Text;
                 EntidadCliente.Direccion = txtDireccion.Text;
                 CapaNegocio.InsertarCliente(EntidadCliente);
@@ -146,14 +152,14 @@ namespace CapaPresentacion
                 EntidadFactura.IdFactura += 1;
             }
             txtNumeroFactura.Text = EntidadFactura.IdFactura.ToString();
-            
 
-            
+
+
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss")) + ".pdf";
             //savefile.ShowDialog();
-            
+
             string PaginaHTML_Texto = Properties.Resources.plantilla.ToString();
 
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txtNombres.Text + txtApellidos.Text);
@@ -161,7 +167,7 @@ namespace CapaPresentacion
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
             string filas = string.Empty;
-            
+
             foreach (DataGridViewRow row in dgvdetalle.Rows)
             {
                 if (!row.IsNewRow)
@@ -173,9 +179,9 @@ namespace CapaPresentacion
                     filas += "<td>" + row.Cells["ivaProducto"].Value.ToString() + "</td>";
                     filas += "<td>" + row.Cells["Total"].Value.ToString() + "</td>";
                     filas += "</tr>";
-                    
+
                 }
-                
+
             }
 
 
@@ -185,7 +191,7 @@ namespace CapaPresentacion
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL0", txtSubtotal0.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", txtSubtotal.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA12", txtIva12.Text);
-       
+
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PRECIOFINAL", txtTotalAPagar.Text);
 
 
