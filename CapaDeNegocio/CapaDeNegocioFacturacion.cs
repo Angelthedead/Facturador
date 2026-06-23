@@ -11,27 +11,35 @@ namespace CapaDeNegocio
 {
     public class CapaDeNegocioFacturacion
     {
+        private readonly CapaDeDatosFacturacion _capaDeDatosFacturacion;
+
+        public CapaDeNegocioFacturacion()
+        {
+            _capaDeDatosFacturacion = new CapaDeDatosFacturacion();
+        }
+
+        public CapaDeNegocioFacturacion(CapaDeDatosFacturacion capaDeDatosFacturacion)
+        {
+            _capaDeDatosFacturacion = capaDeDatosFacturacion;
+        }
+
         public void InsertarCliente(CapaDeEntidadesCliente entidad_Cliente)
         {
-            CapaDeDatosFacturacion CapaDeDatos_Facturacion = new CapaDeDatosFacturacion();
-            CapaDeDatos_Facturacion.InsertarCliente(entidad_Cliente);
+            _capaDeDatosFacturacion.InsertarCliente(entidad_Cliente);
         }
 
         public void InsertarFactura(CapaDeEntidadesFactura entidad_Factura)
         {
-            CapaDeDatosFacturacion CapaDeDatos_Facturacion = new CapaDeDatosFacturacion();
-            CapaDeDatos_Facturacion.InsertarFactura(entidad_Factura);
+            _capaDeDatosFacturacion.InsertarFactura(entidad_Factura);
         }
 
         public void InsertarDetalle(CapaDeEntidadesDetalle entidad_Detalle)
         {
-            CapaDeDatosFacturacion CapaDeDatos_Facturacion = new CapaDeDatosFacturacion();
-            CapaDeDatos_Facturacion.InsertarDetalle(entidad_Detalle);
+            _capaDeDatosFacturacion.InsertarDetalle(entidad_Detalle);
         }
         public int ObtenerIdFactura()
         {
-            CapaDeDatosFacturacion capaDeDatos = new CapaDeDatosFacturacion();
-            return capaDeDatos.ObtenerIdFactura();
+            return _capaDeDatosFacturacion.ObtenerIdFactura();
         }
     }
 }

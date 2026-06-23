@@ -13,9 +13,15 @@ namespace CapaDeDatos
 {
     public class CapaDeDatosFacturacion
     {
-        string conexion = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
+        string conexion;
 
-        public void InsertarCliente(CapaDeEntidadesCliente _Cliente)
+        public CapaDeDatosFacturacion()
+        {
+            var connStrSetting = ConfigurationManager.ConnectionStrings["ConexionBD"];
+            conexion = connStrSetting != null ? connStrSetting.ConnectionString : "";
+        }
+
+        public virtual void InsertarCliente(CapaDeEntidadesCliente _Cliente)
         {
             try
             {
@@ -25,7 +31,7 @@ namespace CapaDeDatos
                     using (SqlCommand Cmd = new SqlCommand(Query, Conn))
                     {
                         Cmd.CommandType = CommandType.StoredProcedure;
-                        
+
                         Cmd.Parameters.AddWithValue("@Nombres", _Cliente.Nombres);
                         Cmd.Parameters.AddWithValue("@Apellidos", _Cliente.Apellidos);
                         Cmd.Parameters.AddWithValue("@Cedula", _Cliente.Cedula);
@@ -45,7 +51,7 @@ namespace CapaDeDatos
             }
         }
 
-        public void InsertarFactura(CapaDeEntidadesFactura _Facturacion)
+        public virtual void InsertarFactura(CapaDeEntidadesFactura _Facturacion)
         {
             try
             {
@@ -72,10 +78,10 @@ namespace CapaDeDatos
             {
                 MessageBox.Show("Ha ocurrido un error2: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
-        public void InsertarDetalle(CapaDeEntidadesDetalle _Detalle)
+        public virtual void InsertarDetalle(CapaDeEntidadesDetalle _Detalle)
         {
             try
             {
@@ -102,10 +108,10 @@ namespace CapaDeDatos
             {
                 MessageBox.Show("Ha ocurrido un error3: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
-        public int ObtenerIdFactura()
+        public virtual int ObtenerIdFactura()
         {
             int ultimoIdFactura = 0;
             try
