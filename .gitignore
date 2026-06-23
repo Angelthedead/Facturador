@@ -1,0 +1,7 @@
+bin/
+obj/
+*.mdb
+*.pdb
+*.cache
+*.FileListAbsolute.txt
+*.FilesWrittenAbsolute.txt
