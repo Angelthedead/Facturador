@@ -29,7 +29,7 @@ namespace CapaPresentacion
             CapaNegocio = new CapaDeNegocioFacturacion();
             EntidadFactura = new CapaDeEntidadesFactura();
             EntidadCliente = new CapaDeEntidadesCliente();
-            
+
         }
 
         private void Facturador_Load(object sender, EventArgs e)
@@ -103,6 +103,8 @@ namespace CapaPresentacion
                 EntidadFactura.Total = Convert.ToDecimal(txtTotalAPagar.Text);
                 CapaNegocio.InsertarFactura(EntidadFactura);
 
+                List<CapaDeEntidadesDetalle> listaDetalles = new List<CapaDeEntidadesDetalle>();
+
                 foreach (DataGridViewRow row in dgvdetalle.Rows)
                 {
                     // Asegúrate de que la fila no esté vacía
@@ -119,9 +121,14 @@ namespace CapaPresentacion
                         EntidadDetalle.IVAProducto = Convert.ToInt32(row.Cells["ivaProducto"].Value);
                         EntidadDetalle.TotalProducto = Convert.ToDecimal(row.Cells["Total"].Value);
 
-                        // Llamar a la capa de negocio para insertar en la base de datos
-                        CapaNegocio.InsertarDetalle(EntidadDetalle);
+                        listaDetalles.Add(EntidadDetalle);
                     }
+                }
+
+                if (listaDetalles.Count > 0)
+                {
+                    // Llamar a la capa de negocio para insertar en la base de datos de forma masiva
+                    CapaNegocio.InsertarDetalles(listaDetalles);
                 }
 
 
@@ -146,14 +153,14 @@ namespace CapaPresentacion
                 EntidadFactura.IdFactura += 1;
             }
             txtNumeroFactura.Text = EntidadFactura.IdFactura.ToString();
-            
 
-            
+
+
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss")) + ".pdf";
             //savefile.ShowDialog();
-            
+
             string PaginaHTML_Texto = Properties.Resources.plantilla.ToString();
 
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txtNombres.Text + txtApellidos.Text);
@@ -161,7 +168,7 @@ namespace CapaPresentacion
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
             string filas = string.Empty;
-            
+
             foreach (DataGridViewRow row in dgvdetalle.Rows)
             {
                 if (!row.IsNewRow)
@@ -173,9 +180,9 @@ namespace CapaPresentacion
                     filas += "<td>" + row.Cells["ivaProducto"].Value.ToString() + "</td>";
                     filas += "<td>" + row.Cells["Total"].Value.ToString() + "</td>";
                     filas += "</tr>";
-                    
+
                 }
-                
+
             }
 
 
@@ -185,7 +192,7 @@ namespace CapaPresentacion
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL0", txtSubtotal0.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", txtSubtotal.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA12", txtIva12.Text);
-       
+
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PRECIOFINAL", txtTotalAPagar.Text);
 
 

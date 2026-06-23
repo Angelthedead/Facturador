@@ -1,0 +1,13 @@
+/app/CapaDeNegocio/obj/Debug/.NETFramework,Version=v4.6.1.AssemblyAttribute.cs
+/app/CapaDeNegocio/bin/Debug/CapaDeNegocio.dll.mdb
+/app/CapaDeNegocio/bin/Debug/CapaDeNegocio.pdb
+/app/CapaDeNegocio/bin/Debug/CapaDeNegocio.dll
+/app/CapaDeNegocio/obj/Debug/CapaDeNegocio.dll
+/app/CapaDeNegocio/obj/Debug/CapaDeNegocio.dll.mdb
+/app/CapaDeNegocio/obj/Debug/CapaDeNegocio.pdb
+/app/CapaDeNegocio/bin/Debug/CapaDeDatos.dll
+/app/CapaDeNegocio/bin/Debug/CapaDeDatos.dll.mdb
+/app/CapaDeNegocio/bin/Debug/CapaDeDatos.pdb
+/app/CapaDeNegocio/bin/Debug/CapaDeEntidades.dll
+/app/CapaDeNegocio/bin/Debug/CapaDeEntidades.dll.mdb
+/app/CapaDeNegocio/bin/Debug/CapaDeEntidades.pdb

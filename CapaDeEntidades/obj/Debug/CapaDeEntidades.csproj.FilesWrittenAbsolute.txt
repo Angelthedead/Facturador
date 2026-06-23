@@ -1,0 +1,7 @@
+/app/CapaDeEntidades/obj/Debug/.NETFramework,Version=v4.6.1.AssemblyAttribute.cs
+/app/CapaDeEntidades/bin/Debug/CapaDeEntidades.dll.mdb
+/app/CapaDeEntidades/bin/Debug/CapaDeEntidades.pdb
+/app/CapaDeEntidades/bin/Debug/CapaDeEntidades.dll
+/app/CapaDeEntidades/obj/Debug/CapaDeEntidades.dll
+/app/CapaDeEntidades/obj/Debug/CapaDeEntidades.dll.mdb
+/app/CapaDeEntidades/obj/Debug/CapaDeEntidades.pdb
