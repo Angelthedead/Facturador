@@ -25,7 +25,7 @@ namespace CapaDeDatos
                     using (SqlCommand Cmd = new SqlCommand(Query, Conn))
                     {
                         Cmd.CommandType = CommandType.StoredProcedure;
-                        
+
                         Cmd.Parameters.AddWithValue("@Nombres", _Cliente.Nombres);
                         Cmd.Parameters.AddWithValue("@Apellidos", _Cliente.Apellidos);
                         Cmd.Parameters.AddWithValue("@Cedula", _Cliente.Cedula);
@@ -72,7 +72,52 @@ namespace CapaDeDatos
             {
                 MessageBox.Show("Ha ocurrido un error2: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
+        }
+
+        public void InsertarDetalles(List<CapaDeEntidadesDetalle> _Detalles)
+        {
+            try
+            {
+                string Query = "INSERTAR_DETALLE_FACTURA";
+                using (SqlConnection Conn = new SqlConnection(conexion))
+                {
+                    Conn.Open();
+                    using (SqlTransaction transaction = Conn.BeginTransaction())
+                    {
+                        using (SqlCommand Cmd = new SqlCommand(Query, Conn, transaction))
+                        {
+                            Cmd.CommandType = CommandType.StoredProcedure;
+
+                            // Define parameters once
+                            Cmd.Parameters.Add("@IdFactura", SqlDbType.Int);
+                            Cmd.Parameters.Add("@DescripcionProducto", SqlDbType.VarChar, 255);
+                            Cmd.Parameters.Add("@Cantidad", SqlDbType.Int);
+                            Cmd.Parameters.Add("@PrecioUnitario", SqlDbType.Decimal);
+                            Cmd.Parameters.Add("@IVAProducto", SqlDbType.Int);
+                            Cmd.Parameters.Add("@TotalProducto", SqlDbType.Decimal);
+
+                            foreach (var detalle in _Detalles)
+                            {
+                                // Set parameter values
+                                Cmd.Parameters["@IdFactura"].Value = detalle.IdFactura;
+                                Cmd.Parameters["@DescripcionProducto"].Value = detalle.DescripcionProducto;
+                                Cmd.Parameters["@Cantidad"].Value = detalle.Cantidad;
+                                Cmd.Parameters["@PrecioUnitario"].Value = detalle.PrecioUnitario;
+                                Cmd.Parameters["@IVAProducto"].Value = detalle.IVAProducto;
+                                Cmd.Parameters["@TotalProducto"].Value = detalle.TotalProducto;
+
+                                Cmd.ExecuteNonQuery();
+                            }
+                        }
+                        transaction.Commit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error3: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void InsertarDetalle(CapaDeEntidadesDetalle _Detalle)
@@ -102,7 +147,7 @@ namespace CapaDeDatos
             {
                 MessageBox.Show("Ha ocurrido un error3: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         public int ObtenerIdFactura()

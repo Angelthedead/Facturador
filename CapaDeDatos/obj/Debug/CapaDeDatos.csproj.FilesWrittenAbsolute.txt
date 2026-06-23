@@ -1,0 +1,10 @@
+/app/CapaDeDatos/obj/Debug/.NETFramework,Version=v4.6.1.AssemblyAttribute.cs
+/app/CapaDeDatos/bin/Debug/CapaDeDatos.dll.mdb
+/app/CapaDeDatos/bin/Debug/CapaDeDatos.pdb
+/app/CapaDeDatos/bin/Debug/CapaDeDatos.dll
+/app/CapaDeDatos/obj/Debug/CapaDeDatos.dll
+/app/CapaDeDatos/obj/Debug/CapaDeDatos.dll.mdb
+/app/CapaDeDatos/obj/Debug/CapaDeDatos.pdb
+/app/CapaDeDatos/bin/Debug/CapaDeEntidades.dll
+/app/CapaDeDatos/bin/Debug/CapaDeEntidades.dll.mdb
+/app/CapaDeDatos/bin/Debug/CapaDeEntidades.pdb

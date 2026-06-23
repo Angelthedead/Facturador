@@ -28,6 +28,12 @@ namespace CapaDeNegocio
             CapaDeDatosFacturacion CapaDeDatos_Facturacion = new CapaDeDatosFacturacion();
             CapaDeDatos_Facturacion.InsertarDetalle(entidad_Detalle);
         }
+
+        public void InsertarDetalles(List<CapaDeEntidadesDetalle> entidades_Detalle)
+        {
+            CapaDeDatosFacturacion CapaDeDatos_Facturacion = new CapaDeDatosFacturacion();
+            CapaDeDatos_Facturacion.InsertarDetalles(entidades_Detalle);
+        }
         public int ObtenerIdFactura()
         {
             CapaDeDatosFacturacion capaDeDatos = new CapaDeDatosFacturacion();
