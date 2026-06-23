@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeNegocio", "CapaDeNego
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeEntidades", "CapaDeEntidades\CapaDeEntidades.csproj", "{F8ABF834-7C8A-46B1-9A21-949766E29117}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeDatos.Tests", "CapaDeDatos.Tests\CapaDeDatos.Tests.csproj", "{43118A43-F4DF-4A47-B9C0-7CEEC47BE861}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F8ABF834-7C8A-46B1-9A21-949766E29117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8ABF834-7C8A-46B1-9A21-949766E29117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8ABF834-7C8A-46B1-9A21-949766E29117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43118A43-F4DF-4A47-B9C0-7CEEC47BE861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43118A43-F4DF-4A47-B9C0-7CEEC47BE861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43118A43-F4DF-4A47-B9C0-7CEEC47BE861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43118A43-F4DF-4A47-B9C0-7CEEC47BE861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

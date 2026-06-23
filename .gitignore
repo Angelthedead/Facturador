@@ -1,0 +1,8 @@
+packages/
+[Bb]in/
+[Oo]bj/
+nuget.exe
+TestResult.xml
+*.patch
+*.orig
+update_*.py
