@@ -25,7 +25,7 @@ namespace CapaDeDatos
                     using (SqlCommand Cmd = new SqlCommand(Query, Conn))
                     {
                         Cmd.CommandType = CommandType.StoredProcedure;
-                        
+
                         Cmd.Parameters.AddWithValue("@Nombres", _Cliente.Nombres);
                         Cmd.Parameters.AddWithValue("@Apellidos", _Cliente.Apellidos);
                         Cmd.Parameters.AddWithValue("@Cedula", _Cliente.Cedula);
@@ -41,7 +41,8 @@ namespace CapaDeDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error1: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Error.WriteLine(ex.ToString());
+                MessageBox.Show("Ha ocurrido un error al insertar el cliente. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -70,9 +71,10 @@ namespace CapaDeDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error2: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Error.WriteLine(ex.ToString());
+                MessageBox.Show("Ha ocurrido un error al insertar la factura. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         public void InsertarDetalle(CapaDeEntidadesDetalle _Detalle)
@@ -100,9 +102,10 @@ namespace CapaDeDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error3: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Error.WriteLine(ex.ToString());
+                MessageBox.Show("Ha ocurrido un error al insertar el detalle de la factura. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         public int ObtenerIdFactura()
@@ -125,7 +128,8 @@ namespace CapaDeDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha ocurrido un error4: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Error.WriteLine(ex.ToString());
+                MessageBox.Show("Ha ocurrido un error al obtener el último ID de factura. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return 0;
             }
