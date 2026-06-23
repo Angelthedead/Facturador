@@ -29,12 +29,21 @@ namespace CapaPresentacion
             CapaNegocio = new CapaDeNegocioFacturacion();
             EntidadFactura = new CapaDeEntidadesFactura();
             EntidadCliente = new CapaDeEntidadesCliente();
-            
+
         }
 
         private void Facturador_Load(object sender, EventArgs e)
         {
-            EntidadFactura.IdFactura = CapaNegocio.ObtenerIdFactura();
+            try
+            {
+                EntidadFactura.IdFactura = CapaNegocio.ObtenerIdFactura();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error al obtener el IdFactura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                EntidadFactura.IdFactura = 0;
+            }
+
             if (EntidadFactura.IdFactura == 0)
             {
                 EntidadFactura.IdFactura = 1;
@@ -136,7 +145,16 @@ namespace CapaPresentacion
                 MessageBox.Show("Ha ocurrido un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            EntidadFactura.IdFactura = CapaNegocio.ObtenerIdFactura();
+            try
+            {
+                EntidadFactura.IdFactura = CapaNegocio.ObtenerIdFactura();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error al obtener el IdFactura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                EntidadFactura.IdFactura = 0;
+            }
+
             if (EntidadFactura.IdFactura == 0)
             {
                 EntidadFactura.IdFactura = 1;
@@ -146,14 +164,14 @@ namespace CapaPresentacion
                 EntidadFactura.IdFactura += 1;
             }
             txtNumeroFactura.Text = EntidadFactura.IdFactura.ToString();
-            
 
-            
+
+
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss")) + ".pdf";
             //savefile.ShowDialog();
-            
+
             string PaginaHTML_Texto = Properties.Resources.plantilla.ToString();
 
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txtNombres.Text + txtApellidos.Text);
@@ -161,7 +179,7 @@ namespace CapaPresentacion
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
             string filas = string.Empty;
-            
+
             foreach (DataGridViewRow row in dgvdetalle.Rows)
             {
                 if (!row.IsNewRow)
@@ -173,9 +191,9 @@ namespace CapaPresentacion
                     filas += "<td>" + row.Cells["ivaProducto"].Value.ToString() + "</td>";
                     filas += "<td>" + row.Cells["Total"].Value.ToString() + "</td>";
                     filas += "</tr>";
-                    
+
                 }
-                
+
             }
 
 
@@ -185,7 +203,7 @@ namespace CapaPresentacion
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL0", txtSubtotal0.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", txtSubtotal.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA12", txtIva12.Text);
-       
+
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PRECIOFINAL", txtTotalAPagar.Text);
 
 
