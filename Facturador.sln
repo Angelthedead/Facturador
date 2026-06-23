@@ -11,12 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeNegocio", "CapaDeNego
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeEntidades", "CapaDeEntidades\CapaDeEntidades.csproj", "{F8ABF834-7C8A-46B1-9A21-949766E29117}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeNegocio.Tests", "CapaDeNegocio.Tests\CapaDeNegocio.Tests.csproj", "{A1B2C3D4-E5F6-7890-1234-567890ABCDEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1B2C3D4-E5F6-7890-1234-567890ABCDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-1234-567890ABCDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-E5F6-7890-1234-567890ABCDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-E5F6-7890-1234-567890ABCDEF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9DEA36FF-B23A-4C46-B828-899A9824C76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9DEA36FF-B23A-4C46-B828-899A9824C76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DEA36FF-B23A-4C46-B828-899A9824C76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
