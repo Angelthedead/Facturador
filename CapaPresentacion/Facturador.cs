@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using CapaDeNegocio;
 using CapaDeEntidades;
 
+using System.Net;
+
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
@@ -29,7 +31,7 @@ namespace CapaPresentacion
             CapaNegocio = new CapaDeNegocioFacturacion();
             EntidadFactura = new CapaDeEntidadesFactura();
             EntidadCliente = new CapaDeEntidadesCliente();
-            
+
         }
 
         private void Facturador_Load(object sender, EventArgs e)
@@ -146,47 +148,47 @@ namespace CapaPresentacion
                 EntidadFactura.IdFactura += 1;
             }
             txtNumeroFactura.Text = EntidadFactura.IdFactura.ToString();
-            
 
-            
+
+
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss")) + ".pdf";
             //savefile.ShowDialog();
-            
+
             string PaginaHTML_Texto = Properties.Resources.plantilla.ToString();
 
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txtNombres.Text + txtApellidos.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txtCedula.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", WebUtility.HtmlEncode(txtNombres.Text + txtApellidos.Text));
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", WebUtility.HtmlEncode(txtCedula.Text));
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", WebUtility.HtmlEncode(DateTime.Now.ToString("dd/MM/yyyy")));
 
             string filas = string.Empty;
-            
+
             foreach (DataGridViewRow row in dgvdetalle.Rows)
             {
                 if (!row.IsNewRow)
                 {
                     filas += "<tr>";
-                    filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Descripcion"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["PrecioUnitario"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["ivaProducto"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Total"].Value.ToString() + "</td>";
+                    filas += "<td>" + WebUtility.HtmlEncode(row.Cells["Cantidad"].Value.ToString()) + "</td>";
+                    filas += "<td>" + WebUtility.HtmlEncode(row.Cells["Descripcion"].Value.ToString()) + "</td>";
+                    filas += "<td>" + WebUtility.HtmlEncode(row.Cells["PrecioUnitario"].Value.ToString()) + "</td>";
+                    filas += "<td>" + WebUtility.HtmlEncode(row.Cells["ivaProducto"].Value.ToString()) + "</td>";
+                    filas += "<td>" + WebUtility.HtmlEncode(row.Cells["Total"].Value.ToString()) + "</td>";
                     filas += "</tr>";
-                    
+
                 }
-                
+
             }
 
 
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
 
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL12", txtSubtotal12.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL0", txtSubtotal0.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", txtSubtotal.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA12", txtIva12.Text);
-       
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PRECIOFINAL", txtTotalAPagar.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL12", WebUtility.HtmlEncode(txtSubtotal12.Text));
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL0", WebUtility.HtmlEncode(txtSubtotal0.Text));
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", WebUtility.HtmlEncode(txtSubtotal.Text));
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA12", WebUtility.HtmlEncode(txtIva12.Text));
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PRECIOFINAL", WebUtility.HtmlEncode(txtTotalAPagar.Text));
 
 
 
