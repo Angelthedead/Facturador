@@ -152,7 +152,6 @@ namespace CapaPresentacion
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss")) + ".pdf";
-            //savefile.ShowDialog();
             
             string PaginaHTML_Texto = Properties.Resources.plantilla.ToString();
 
