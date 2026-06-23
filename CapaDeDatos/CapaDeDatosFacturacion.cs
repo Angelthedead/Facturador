@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CapaDeDatos
 {
-    public class CapaDeDatosFacturacion
+    public class CapaDeDatosFacturacion : ICapaDeDatosFacturacion
     {
         string conexion = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
 
