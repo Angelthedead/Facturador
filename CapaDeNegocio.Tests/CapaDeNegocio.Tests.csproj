@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-1234-567890ABCDEF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaDeNegocio.Tests</RootNamespace>
+    <AssemblyName>CapaDeNegocio.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="nunit.framework">
+      <HintPath>NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>Moq.4.18.4\lib\net462\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>Castle.Core.5.1.1\lib\net462\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CapaDeNegocioFacturacionTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
+      <Project>{c4d7272d-1cc9-4cfb-95ad-0d0760bed2ff}</Project>
+      <Name>CapaDeDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaDeEntidades\CapaDeEntidades.csproj">
+      <Project>{f8abf834-7c8a-46b1-9a21-949766e29117}</Project>
+      <Name>CapaDeEntidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaDeNegocio\CapaDeNegocio.csproj">
+      <Project>{E4E9A427-3B2A-4E95-96EB-877C8D93A50A}</Project>
+      <Name>CapaDeNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
