@@ -11830,7 +11830,6 @@
             or random-access organized file, and be able to embed JBIG2 pages as images 
             in a PDF.
             
-            TODO: the indeterminate-segment-size value of dataLength, else?
             
             @since 2.1.5
         </member>
